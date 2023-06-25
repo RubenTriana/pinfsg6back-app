@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Alta extends Model
-
+class Persona extends Model
 {
     use SoftDeletes;
-    protected $table = 'altas';
+    protected $table = 'personas';
     protected $primaryKey = 'id';
     protected $fillable = [
         'nombre',

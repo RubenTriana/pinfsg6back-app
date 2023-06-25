@@ -11,15 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('altas', function (Blueprint $table) {
+        Schema::create('personas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100);
             $table->string('correo',100)->unique();
-            $table->string('telefono');
-            $table->text('mensaje');
+            $table->bigInteger('telefono',12)->unsigned()->nullable(true)->change();
+            $table->string('mensaje');
             $table->timestamps();
             $table->softDeletes();
+
         });
+
+
     }
 
     /**
@@ -27,6 +30,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('altas');
+        Schema::dropIfExists('personas');
+        Schema::table('personas', function (Blueprint $table) {
+            $table->integer('telefono')->unsigned()->nullable(false)->change();
+        });
     }
 };

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alta;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class AltaController extends Controller
@@ -12,7 +13,21 @@ class AltaController extends Controller
      */
     public function index()
     {
-        //
+        $altas = Alta::get();
+
+        $data = $altas->map(function($altas){
+            return [
+                'nombre_usuario' => $altas->nombre,
+                'correo' => $altas->correo,
+                'telefono' => $altas->telefono,
+                'mensaje' => $altas->mensaje,
+            ];
+        });
+
+        return response()->json([
+            'informe' => 'Mensajes de usuarios',
+            'data' => $data
+        ]);
     }
 
     /**
@@ -28,7 +43,24 @@ class AltaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => ['required', 'alpha:ascii'],
+            'correo' => ['required', 'email'],
+            'telefono' => ['required', 'alpha:ascii'],
+            'mensaje' => ['required', 'alpha:ascii']
+        ]);
+
+        $alta = Alta::create([
+            'nombre' => ['required', 'alpha:ascii'],
+            'correo' => ['required', 'email'],
+            'telefono' => ['required', 'alpha:ascii'],
+            'mensaje' => ['required', 'alpha:ascii']
+        ]);
+
+        return response()->json([
+            'mensaje' => 'La persona se registro correctamente',
+            'alta' => $alta
+        ]);
     }
 
     /**
