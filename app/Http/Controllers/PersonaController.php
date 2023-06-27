@@ -42,11 +42,12 @@ class PersonaController extends Controller
         ], 400);
     }
         $request->validate([
-            'nombre' => ['required', 'regex:/^[A-Za-z\s]+$/u'],
+            'nombre' => ['required', 'regex:/^[A-Za-z\sñáéíóú,]+$/u'],
             'correo' => ['required', 'email', 'unique:personas'],
             'telefono' => ['required'],
-            'mensaje' => ['required', 'regex:/^[A-Za-z\s]+$/u']
-        ]);
+            'mensaje' => ['required', 'regex:/^[A-Za-z\sñáéíóú!?¿,]+$/u']
+    ]);
+
 
         $persona = Persona::create([
             'nombre' => $request->nombre,

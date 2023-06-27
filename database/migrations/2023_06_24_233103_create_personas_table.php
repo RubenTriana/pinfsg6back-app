@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 100);
             $table->string('correo',100)->unique();
-            $table->bigInteger('telefono',12)->unsigned()->nullable(true)->change();
+            $table->string('telefono', 20)->nullable();
             $table->string('mensaje');
             $table->timestamps();
             $table->softDeletes();
