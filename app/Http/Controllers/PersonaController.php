@@ -36,17 +36,17 @@ class PersonaController extends Controller
     {
         $existingEmail = Persona::where('correo', $request->correo)->exists();
 
-    if ($existingEmail) {
-        return response()->json([
-            'message' => 'El correo electrónico ya está en uso'
-        ], 400);
-    }
+        if ($existingEmail) {
+            return response()->json([
+                'message' => 'El correo electrónico ya está en uso'
+            ], 400);
+        }
         $request->validate([
             'nombre' => ['required', 'regex:/^[A-Za-z\sñáéíóú,]+$/u'],
-            'correo' => ['required', 'email', 'unique:personas'],
+            'correo' => ['required', 'email'],
             'telefono' => ['required'],
             'mensaje' => ['required', 'regex:/^[A-Za-z\sñáéíóú!?¿,]+$/u']
-    ]);
+        ]);
 
 
         $persona = Persona::create([
