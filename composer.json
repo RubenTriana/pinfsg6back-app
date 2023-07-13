@@ -10,7 +10,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "reliese/laravel": "master"
+       
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -63,11 +63,5 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "repositories": [
-  {
-    "type": "vcs",
-    "url": "https://github.com/MuriellRangel/RubenTriana/pinfsg6back-app"
-  }
-]
-}
+    "prefer-stable": true
+
