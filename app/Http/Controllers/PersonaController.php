@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendPost;
 use App\Models\Persona;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-//use App\Http\Controllers\SendPost;
 use App\Http\Controllers\Controller;
-use App\Mail\SendPost;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class PersonaController extends Controller
@@ -63,7 +63,9 @@ class PersonaController extends Controller
             'mensaje' => $request['mensaje']
         ];
 
-        Mail::to('rubendariotriana@gmail.com')->send(new SendPost($details));
+       Mail::to('rubendariotriana@gmail.com')->send(new SendPost($details));
+
+
 
         return response()->json([
             'mensaje' => 'La persona se registró correctamente',
