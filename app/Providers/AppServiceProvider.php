@@ -18,12 +18,12 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
         public function boot(): void
-    {
-        $this->setUTCOffsetInDBConnection();
+   /*  /*  */{
+        //$this->setUTCOffsetInDBConnection();
         // Resto del código del método boot()
     }
 
-    private function setUTCOffsetInDBConnection()
+    /* private function setUTCOffsetInDBConnection()
     {
         $now = new \DateTime();
         $mins = $now->getOffset() / 60;
@@ -33,6 +33,6 @@ class AppServiceProvider extends ServiceProvider
         $mins -= $hrs * 60;
         $offset = sprintf('%+d:%02d', $hrs*$sgn, $mins);
         DB::statement("SET time_zone='".$offset."';");
-    }
+    }  */
 
 }
